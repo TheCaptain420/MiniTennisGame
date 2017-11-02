@@ -1,7 +1,8 @@
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public class Game4Ball {
+    private static final int DIAMETER = 30;//På ball
     int x = 0;
     int y = 0;
     //Speed variable, der justere hastighed på ball
@@ -20,19 +21,33 @@ public class Game4Ball {
         if (x + xa < 0)
             xa = 1;
         //Hvis ball position er større end canvas bredde, går bolden til venste istedet for højre.
-        if (x + xa > game.getWidth() - 30)
+        if (x + xa > game.getWidth() - DIAMETER)
             xa = -1;
         //Samme her bare med op og ned
         if (y + ya < 0)
             ya = 1;
-        if (y + ya > game.getHeight() - 30)
+        if (y + ya > game.getHeight() - DIAMETER)
+            game.gameOver();
+        if (collision())
             ya = -1;
+            y= game.racket.getTopY() - DIAMETER;
         //Ball pos bliver så ændret med xa og ya
         x = x + xa;
         y = y + ya;
     }
+    //Collision tester om bounds af racket og ball er det samme
+    private boolean collision(){
+        return game.racket.getBounds().intersects(getBounds());
+
+    }
+    //Tegner cirklen/ball om til en firkant, så bounds er lettere at hente
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, DIAMETER, DIAMETER);
+    }
+
     //Har bare smidt værdierne herind istedet for i Game4 paint();
     public void paint(Graphics2D g) {
         g.fillOval(x, y, 30, 30);
     }
+
 }
