@@ -1,3 +1,4 @@
+package theCap;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,7 +10,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Game4 extends JPanel {
 
-    //Henter ball fra Game4Ball, har i teorien bare ryttet op..
+    //Henter ball fra theCap.Game4Ball, har i teorien bare ryttet op..
     Game4Ball ball = new Game4Ball(this);
     Game4Racket racket = new Game4Racket(this);
 
@@ -52,7 +53,7 @@ public class Game4 extends JPanel {
     }
     //Printer gameover, som bliver kørt i GAME4BALL
     public void gameOver() {
-        JOptionPane.showMessageDialog(this, "Game Over", "Game Over", JOptionPane.YES_NO_OPTION);
+        JOptionPane.showMessageDialog(this, "Game Over "+ball.score, "Game Over", JOptionPane.YES_NO_OPTION);
         System.exit(ABORT);
     }
 

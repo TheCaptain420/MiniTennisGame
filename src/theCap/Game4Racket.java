@@ -1,3 +1,5 @@
+package theCap;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 public class Game4Racket{

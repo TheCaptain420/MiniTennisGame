@@ -1,3 +1,4 @@
+package theCap;
 
 import java.awt.*;
 
@@ -6,10 +7,10 @@ public class Game4Ball {
     int x = 0;
     int y = 0;
     //Speed variable, der justere hastighed på ball
-    // If xa=1, the ball moves to the right, one pixel every round of the Game Loop, if xa=-1, the ball moves to the left. Same with ya.
+    // If xa=1, the ball moves to the right, one pixel every round of the theCap.Game Loop, if xa=-1, the ball moves to the left. Same with ya.
     int xa = 1;
     int ya = 1;
-
+    int score = 0;
     private Game4 game;
 
     public Game4Ball(Game4 game) {
@@ -30,10 +31,12 @@ public class Game4Ball {
             game.gameOver();
         if (collision())
             ya = -1;
-            y= game.racket.getTopY() - DIAMETER;
+            //y= game.racket.getTopY() - DIAMETER;
+
         //Ball pos bliver så ændret med xa og ya
-        x = x + xa;
         y = y + ya;
+        x = x + xa;
+
     }
     //Collision tester om bounds af racket og ball er det samme
     private boolean collision(){
@@ -45,7 +48,7 @@ public class Game4Ball {
         return new Rectangle(x, y, DIAMETER, DIAMETER);
     }
 
-    //Har bare smidt værdierne herind istedet for i Game4 paint();
+    //Har bare smidt værdierne herind istedet for i theCap.Game4 paint();
     public void paint(Graphics2D g) {
         g.fillOval(x, y, 30, 30);
     }
